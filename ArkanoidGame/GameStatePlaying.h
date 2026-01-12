@@ -11,7 +11,7 @@
 
 #include <unordered_map>
 
-namespace ArkanoidGame
+namespace RogueLikeGame
 {
 	class Game;
 	class Block;

@@ -9,7 +9,7 @@
 #include <assert.h>
 #include <sstream>
 
-namespace ArkanoidGame
+namespace RogueLikeGame
 {
 	void GameStatePlayingData::Init()
 	{	
