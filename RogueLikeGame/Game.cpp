@@ -225,10 +225,10 @@ namespace RogueLikeGame
 		}
 	}
 
-	void Game::LoadNextLevel()
+	/*void Game::LoadNextLevel()
 	{
 		assert(stateStack.back().GetType() == GameStateType::Playing);
 		auto playingData = (stateStack.back().GetData<GameStatePlayingData>());
 		playingData->LoadNextLevel();
-	}
+	}*/
 }
