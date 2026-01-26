@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RogueLikeGame", "RogueLikeG
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{7441BA81-F18A-4BAC-A46D-8DAE609F9246}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine_Test", "Engine_Test\Engine_Test.vcxproj", "{281C102B-9567-453F-8BF5-3D47240D192C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{7441BA81-F18A-4BAC-A46D-8DAE609F9246}.Release|x64.Build.0 = Release|x64
 		{7441BA81-F18A-4BAC-A46D-8DAE609F9246}.Release|x86.ActiveCfg = Release|Win32
 		{7441BA81-F18A-4BAC-A46D-8DAE609F9246}.Release|x86.Build.0 = Release|Win32
+		{281C102B-9567-453F-8BF5-3D47240D192C}.Debug|x64.ActiveCfg = Debug|x64
+		{281C102B-9567-453F-8BF5-3D47240D192C}.Debug|x64.Build.0 = Debug|x64
+		{281C102B-9567-453F-8BF5-3D47240D192C}.Debug|x86.ActiveCfg = Debug|Win32
+		{281C102B-9567-453F-8BF5-3D47240D192C}.Debug|x86.Build.0 = Debug|Win32
+		{281C102B-9567-453F-8BF5-3D47240D192C}.Release|x64.ActiveCfg = Release|x64
+		{281C102B-9567-453F-8BF5-3D47240D192C}.Release|x64.Build.0 = Release|x64
+		{281C102B-9567-453F-8BF5-3D47240D192C}.Release|x86.ActiveCfg = Release|Win32
+		{281C102B-9567-453F-8BF5-3D47240D192C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

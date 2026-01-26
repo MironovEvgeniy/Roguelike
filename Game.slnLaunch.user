@@ -7,7 +7,7 @@
         "Action": "Start"
       },
       {
-        "Path": "SFMLTemplate\\SFMLTemplate.vcxproj",
+        "Path": "RogueLikeGame\\RogueLikeGame.vcxproj",
         "Action": "Start"
       }
     ]

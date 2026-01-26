@@ -3,13 +3,15 @@
 
 #include <SFML/Graphics.hpp>
 #include "Application.h"
+#include "Engine.h"
 
 
 using namespace RogueLikeGame;
 
 int main()
 {
-	Application::Instance().Run();
+	XYZEngine::Engine::Instance()->Run();
+	//Application::Instance().Run();
 
 	return 0;
 }
