@@ -1,11 +1,10 @@
 #pragma once
 #define NOMINMAX
-#include "EngineAPI.h"
 #include "SFML/Graphics.hpp"
 
-namespace XYZEngine
+namespace MyEngine
 {
-	class ENGINE_API Engine
+	class Engine
 	{
 	public:
 		Engine(const Engine& app) = delete;
@@ -18,8 +17,5 @@ namespace XYZEngine
 	private:
 		Engine();
 		~Engine() = default;
-
-	private:
-		sf::RenderWindow window;
 	};
 }

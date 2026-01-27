@@ -30,7 +30,7 @@ int main()
 	//engine.Initialize();
 	//engine.Run();
 
-	XYZEngine::Engine::Instance()->Run();
+	MyEngine::Engine::Instance()->Run();
 
 	sf::RenderWindow window(sf::VideoMode(330, 400), "SFML works!");
 
