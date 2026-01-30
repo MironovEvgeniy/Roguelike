@@ -3,6 +3,8 @@
 #include <iostream>
 #include "GameWorld.h"
 #include "RenderSystem.h"
+#include "GameOverUi.h"
+#include "Logger.h"
 
 namespace MyEngine
 {
@@ -16,12 +18,27 @@ namespace MyEngine
 	{
 		unsigned int seed = (unsigned int)time(nullptr);
 		srand(seed);
+		setupLogger();
+	}
+
+	void Engine::setupLogger()
+	{
+		auto logger = std::make_shared<Logger>();
+		logger->addSink(std::make_shared<ConsoleSink>());
+		logger->addSink(std::make_shared<FileSink>("log.txt"));
+
+		LoggerRegistry::getInstance().registerLogger("global", logger);
+		LoggerRegistry::getInstance().setDefaultLogger(logger);
 	}
 
 	void Engine::Run()
 	{
 		sf::Clock gameClock;
 		sf::Event event;
+		GameOverUi gameOverUi;
+		InitUI(gameOverUi);
+
+		LOG_INFO("Program was started!");
 
 		while (RenderSystem::Instance()->GetMainWindow().isOpen())
 		{
@@ -40,6 +57,13 @@ namespace MyEngine
 			{
 				break;
 			}
+			if (!gameOverUi.targetTransform)
+			{
+				if (auto* playerGO = MyEngine::GameWorld::Instance()->FindObjectByName("Player"))
+				{
+					AttachTextToPlayer(gameOverUi, playerGO);
+				}
+			}
 
 			RenderSystem::Instance()->GetMainWindow().clear();
 
@@ -47,6 +71,8 @@ namespace MyEngine
 			GameWorld::Instance()->FixedUpdate(deltaTime);
 			GameWorld::Instance()->Render();
 			GameWorld::Instance()->LateUpdate();
+			UpdateUI(gameOverUi, deltaTime);
+			DrawUI(gameOverUi, RenderSystem::Instance()->GetMainWindow());
 
 			RenderSystem::Instance()->GetMainWindow().display();
 		}

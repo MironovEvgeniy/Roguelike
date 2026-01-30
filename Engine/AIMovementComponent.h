@@ -1,7 +1,6 @@
 #pragma once
-#include "Component.h"
+#include "GameObject.h"
 #include "SpriteRendererComponent.h"
-#include "TransformComponent.h"
 
 namespace MyEngine
 {
@@ -12,23 +11,33 @@ namespace MyEngine
 
       void Update(float deltaTime) override;
       void Render() override;
+      void SetSpeed(float newSpeed);
+      //float GetSpeed() const;
+     // float GetAccelerationSquared() const;
+      void SetTarget(GameObject* target);
 
-      virtual void SetSpeed(float newSpeed);
-      virtual void SetTarget(GameObject* gameObject);
-      //virtual void ClearTarget();
-      //virtual GameObject* GetTarget();
-     // virtual float GetSpeed() const;
-      //virtual float GetAccelerationSquared() const;
+      float GetDistanceFromTarget() const
+      {
+         return distanceFromTarget;
+      }
+      bool IsChasing() const
+      {
+         return chase;
+      }
+     
+      GameObject* GetTarget() const
+      {
+         return objectTarget;
+      }
 
-   private:
+   protected:
       TransformComponent* transform = nullptr;
-      TransformComponent* targetTransform = nullptr;
+      GameObject* objectTarget = nullptr;
       SpriteRendererComponent* spriteRenderer = nullptr;
-
-      float speed = 20.f;
+      float distanceFromTarget = 0;
+      float speed = 0;
       float viewingRadius = 300.f;
-      Vector2Df previousPosition = { 0, 0 };
-      Vector2Df acceleration = { 0, 0 };
+      float meeleeAttackDistance = 55.f;
+      bool chase = true;
    };
-
-} // namespace XYZEngine
+}

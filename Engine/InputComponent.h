@@ -15,8 +15,13 @@ namespace MyEngine
 
 		float GetHorizontalAxis() const;
 		float GetVerticalAxis() const;
+		bool IsMousePressed() const;
+
 	private:
 		float horizontalAxis = 0.f;
 		float verticalAxis = 0.f;
+		bool isMousePressed = false;
+		bool wasMouseDownLastFrame = false;
+		bool mouseClickedThisFrame = false;
 	};
 }

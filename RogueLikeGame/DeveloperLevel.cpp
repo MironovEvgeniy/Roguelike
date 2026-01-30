@@ -53,6 +53,10 @@ namespace XYZRoguelike
 		}
 
 		player = std::make_unique<Player>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
+		//healthPickup = std::make_unique<HealthPickup>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, 6 / 2 * 128.f }), player->GetGameObject());
+		//armorPickup = std::make_unique<ArmorPickup>(std::forward<MyEngine::Vector2Df>({ 6 / 2 * 128.f, height / 2 * 128.f }), player->GetGameObject());
+		healthBar = std::make_unique<HealthBar>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
+		armorBar = std::make_unique<ArmorBar>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
 		ai = std::make_unique<Enemy>(std::forward<MyEngine::Vector2Df>({ 4 / 2 * 128.f, height / 2 * 128.f }), player->GetGameObject());
 		music = std::make_unique<Music>("GamePlaymusic");
 	}

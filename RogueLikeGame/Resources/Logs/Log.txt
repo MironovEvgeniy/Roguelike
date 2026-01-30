@@ -1,0 +1,4 @@
+[INFO] Starting developer level
+[INFO] Created Walls
+[INFO] Starting developer level
+[INFO] Created Walls

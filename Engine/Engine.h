@@ -17,5 +17,7 @@ namespace MyEngine
 	private:
 		Engine();
 		~Engine() = default;
+
+		void setupLogger();
 	};
 }
