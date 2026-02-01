@@ -1,5 +1,5 @@
 #include "DeveloperLevel.h"
-#include "Wall.h"
+#include "MazeGenerator.h"
 
 using namespace MyEngine;
 
@@ -14,6 +14,11 @@ namespace XYZRoguelike
 		{
 			for (int x = 0; x < width + 1; x++)
 			{
+				if (x != 0 && x != width && y != 0 && y != height)
+				{
+					floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(0)));
+				}
+
 				//if left-bottom corner
 				if (x == 0 && y == 0)
 				{
@@ -47,10 +52,26 @@ namespace XYZRoguelike
 				//if top (not corner)
 				if (y == height && x != width && x != 0)
 				{
+					floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(18)));
 					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(38)));
+				}
+
+				if (x == 0 && y != height && y != 0)
+				{
+					floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(18)));
+					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(12)));
+				}
+
+				if (x == width && y != height && y != 0)
+				{
+					floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(19)));
+					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(12)));
 				}
 			}
 		}
+
+		MazeGenerator mazeGenerator(width, height, this);
+		mazeGenerator.Generate();
 
 		player = std::make_unique<Player>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
 		//healthPickup = std::make_unique<HealthPickup>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, 6 / 2 * 128.f }), player->GetGameObject());

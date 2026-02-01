@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Music.h"
 #include "Wall.h"
+#include "Floor.h"
 //#include "HealthPickup.h"
 //#include "ArmorPickup.h"
 #include "HealthBar.h"
@@ -23,6 +24,10 @@ namespace XYZRoguelike
 		void Start() override;
 		void Restart() override;
 		void Stop() override;
+
+		std::vector<std::unique_ptr<Wall>> walls;
+		std::vector<std::unique_ptr<Floor>> floors;
+
 	private:
 		std::shared_ptr<Player> player;
 		std::shared_ptr<Enemy> ai;
@@ -33,6 +38,6 @@ namespace XYZRoguelike
 		std::unique_ptr<HealthBar> healthBar;
 		std::unique_ptr<ArmorBar> armorBar;
 
-		std::vector<std::unique_ptr<Wall>> walls;
+		
 	};
 }

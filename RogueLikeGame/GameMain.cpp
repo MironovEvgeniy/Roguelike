@@ -17,7 +17,10 @@ int main()
    ResourceSystem::Instance()->LoadTextureMap("player_walking", "Resources/Textures/Walking.png", { 100, 64 }, 7, false);
    ResourceSystem::Instance()->LoadTextureMap("player_idle", "Resources/Textures/Idle.png", { 100, 64 }, 4, false);
    ResourceSystem::Instance()->LoadTextureMap("player_dying", "Resources/Textures/Dying.png", { 100, 64 }, 6, false);
+
    ResourceSystem::Instance()->LoadTextureMap("level_walls", "Resources/Textures/Wall.png", { 16, 16 }, 48, false);
+   ResourceSystem::Instance()->LoadTextureMap("level_floors", "Resources/Textures/Floor.png", { 16, 16 }, 49, false);
+   
    ResourceSystem::Instance()->LoadTextureMap("enemy_idle", "Resources/Textures/idleEnemy.png", { 148, 96 }, 6, false);
    ResourceSystem::Instance()->LoadTextureMap("enemy_walking", "Resources/Textures/RUN.png", { 148, 96 }, 8, false);
    ResourceSystem::Instance()->LoadTextureMap("enemy_attacking", "Resources/Textures/Attack1.png", { 158, 96 }, 5, false);
