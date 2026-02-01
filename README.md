@@ -39,7 +39,7 @@
 Структура проекта
 • Engine — собственный 2D-движок
 
-• XYZRoguelike — игровая логика:
+• RogueLikeGame — игровая логика:
 
 • генерация лабиринтов и создание уровней
 
@@ -63,7 +63,7 @@
 
 1.Клонировать репозиторий:
 
-git clone https://github.com/alfomich4/Rogue-like
+git clone https://github.com/MironovEvgeniy/Roguelike
 
 2.Открыть Game.sln в Visual Studio 2022.
 
@@ -77,7 +77,7 @@ git clone https://github.com/alfomich4/Rogue-like
 
 2.Скрипт соберёт решение, скопирует ресурсы в x64<Конфигурация>\Resources и запустит игру.
 
-3.Исполняемый файл по умолчанию: XYZRoguelike\x64\Debug\XYZRoguelike.exe (или x64\Debug\XYZRoguelike.exe — в зависимости от конфигурации скрипта).
+3.Исполняемый файл по умолчанию: RogueLikeGame\x64\Debug\RogueLikeGame.exe (или x64\Debug\RogueLikeGame.exe — в зависимости от конфигурации скрипта).
 
 
 Управление
