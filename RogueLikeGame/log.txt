@@ -16623,3 +16623,4 @@
 [INFO] Move left
 [INFO] Move left
 [INFO] Move left
+[INFO] Program was started!
