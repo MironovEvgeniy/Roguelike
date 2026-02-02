@@ -4,40 +4,40 @@
 
 namespace MyEngine
 {
-   class AIMovementComponent : public Component
-   {
-   public:
-      AIMovementComponent(GameObject* gameObject);
+class AIMovementComponent : public Component
+{
+  public:
+    AIMovementComponent(GameObject *gameObject);
 
-      void Update(float deltaTime) override;
-      void Render() override;
-      void SetSpeed(float newSpeed);
-      //float GetSpeed() const;
-     // float GetAccelerationSquared() const;
-      void SetTarget(GameObject* target);
+    void Update(float deltaTime) override;
+    void Render() override;
+    void SetSpeed(float newSpeed);
+    // float GetSpeed() const;
+    // float GetAccelerationSquared() const;
+    void SetTarget(GameObject *target);
 
-      float GetDistanceFromTarget() const
-      {
-         return distanceFromTarget;
-      }
-      bool IsChasing() const
-      {
-         return chase;
-      }
-     
-      GameObject* GetTarget() const
-      {
-         return objectTarget;
-      }
+    float GetDistanceFromTarget() const
+    {
+        return distanceFromTarget;
+    }
+    bool IsChasing() const
+    {
+        return chase;
+    }
 
-   protected:
-      TransformComponent* transform = nullptr;
-      GameObject* objectTarget = nullptr;
-      SpriteRendererComponent* spriteRenderer = nullptr;
-      float distanceFromTarget = 0;
-      float speed = 0;
-      float viewingRadius = 300.f;
-      float meeleeAttackDistance = 55.f;
-      bool chase = true;
-   };
-}
+    GameObject *GetTarget() const
+    {
+        return objectTarget;
+    }
+
+  protected:
+    TransformComponent *transform = nullptr;
+    GameObject *objectTarget = nullptr;
+    SpriteRendererComponent *spriteRenderer = nullptr;
+    float distanceFromTarget = 0;
+    float speed = 0;
+    float viewingRadius = 300.f;
+    float meeleeAttackDistance = 55.f;
+    bool chase = true;
+};
+} // namespace MyEngine

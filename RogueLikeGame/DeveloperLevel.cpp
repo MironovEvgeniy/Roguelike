@@ -1,93 +1,98 @@
 #include "DeveloperLevel.h"
 #include "MazeGenerator.h"
+#include "EnemySpawner.h"
 
 using namespace MyEngine;
 
 namespace XYZRoguelike
 {
-	void DeveloperLevel::Start()
-	{
-		int width = 10;
-		int height = 10;
+void DeveloperLevel::Start()
+{
+    int width = 10;
+    int height = 10;
 
-		for (int y = 0; y < height + 1; y++)
-		{
-			for (int x = 0; x < width + 1; x++)
-			{
-				if (x != 0 && x != width && y != 0 && y != height)
-				{
-					floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(0)));
-				}
+    for (int y = 0; y < height + 1; y++)
+    {
+        for (int x = 0; x < width + 1; x++)
+        {
+            if (x != 0 && x != width && y != 0 && y != height)
+            {
+                floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(0)));
+            }
 
-				//if left-bottom corner
-				if (x == 0 && y == 0)
-				{
-					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(25)));
-				}
+            // if left-bottom corner
+            if (x == 0 && y == 0)
+            {
+                walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(25)));
+            }
 
-				//if right-bottom corner
-				if (x == width && y == 0)
-				{
-					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(27)));
-				}
+            // if right-bottom corner
+            if (x == width && y == 0)
+            {
+                walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(27)));
+            }
 
-				//if left-top corner
-				if (x == 0 && y == height)
-				{
-					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(1)));
-				}
+            // if left-top corner
+            if (x == 0 && y == height)
+            {
+                walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(1)));
+            }
 
-				//if right-top corner
-				if (x == width && y == height)
-				{
-					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(3)));
-				}
+            // if right-top corner
+            if (x == width && y == height)
+            {
+                walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(3)));
+            }
 
-				//if bottom (not corner)
-				if (y == 0 && x != width && x != 0)
-				{
-					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(38)));
-				}
+            // if bottom (not corner)
+            if (y == 0 && x != width && x != 0)
+            {
+                walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(38)));
+            }
 
-				//if top (not corner)
-				if (y == height && x != width && x != 0)
-				{
-					floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(18)));
-					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(38)));
-				}
+            // if top (not corner)
+            if (y == height && x != width && x != 0)
+            {
+                floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(18)));
+                walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(38)));
+            }
 
-				if (x == 0 && y != height && y != 0)
-				{
-					floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(18)));
-					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(12)));
-				}
+            if (x == 0 && y != height && y != 0)
+            {
+                floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(18)));
+                walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(12)));
+            }
 
-				if (x == width && y != height && y != 0)
-				{
-					floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(19)));
-					walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({ x * 128.f, y * 128.f }), std::forward<int>(12)));
-				}
-			}
-		}
+            if (x == width && y != height && y != 0)
+            {
+                floors.push_back(std::make_unique<Floor>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(19)));
+                walls.push_back(std::make_unique<Wall>(std::forward<MyEngine::Vector2Df>({x * 128.f, y * 128.f}), std::forward<int>(12)));
+            }
+        }
+    }
 
-		MazeGenerator mazeGenerator(width, height, this);
-		mazeGenerator.Generate();
+    MazeGenerator mazeGenerator(width, height, this);
+    mazeGenerator.Generate();
 
-		player = std::make_unique<Player>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
-		//healthPickup = std::make_unique<HealthPickup>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, 6 / 2 * 128.f }), player->GetGameObject());
-		//armorPickup = std::make_unique<ArmorPickup>(std::forward<MyEngine::Vector2Df>({ 6 / 2 * 128.f, height / 2 * 128.f }), player->GetGameObject());
-		healthBar = std::make_unique<HealthBar>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
-		armorBar = std::make_unique<ArmorBar>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, height / 2 * 128.f }));
-		ai = std::make_unique<Enemy>(std::forward<MyEngine::Vector2Df>({ 4 / 2 * 128.f, height / 2 * 128.f }), player->GetGameObject());
-		music = std::make_unique<Music>("GamePlaymusic");
-	}
-	void DeveloperLevel::Restart()
-	{
-		Stop();
-		Start();
-	}
-	void DeveloperLevel::Stop()
-	{
-		GameWorld::Instance()->Clear();
-	}
+    player = std::make_unique<Player>(std::forward<MyEngine::Vector2Df>({width / 2 * 128.f, height / 2 * 128.f}));
+    // healthPickup = std::make_unique<HealthPickup>(std::forward<MyEngine::Vector2Df>({ width / 2 * 128.f, 6 / 2 * 128.f }),
+    // player->GetGameObject()); armorPickup = std::make_unique<ArmorPickup>(std::forward<MyEngine::Vector2Df>({ 6 / 2 * 128.f, height / 2 * 128.f }),
+    // player->GetGameObject());
+    healthBar = std::make_unique<HealthBar>(std::forward<MyEngine::Vector2Df>({width / 2 * 128.f, height / 2 * 128.f}));
+    armorBar = std::make_unique<ArmorBar>(std::forward<MyEngine::Vector2Df>({width / 2 * 128.f, height / 2 * 128.f}));
+   // ai = std::make_unique<Enemy>(std::forward<MyEngine::Vector2Df>({4 / 2 * 128.f, height / 2 * 128.f}), player->GetGameObject());
+    EnemySpawner enemySpawner;
+    enemySpawner.Spawn(this, player->GetGameObject(), 3);
+
+    music = std::make_unique<Music>("GamePlaymusic");
 }
+void DeveloperLevel::Restart()
+{
+    Stop();
+    Start();
+}
+void DeveloperLevel::Stop()
+{
+    GameWorld::Instance()->Clear();
+}
+} // namespace XYZRoguelike

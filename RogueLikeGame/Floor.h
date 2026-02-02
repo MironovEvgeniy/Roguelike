@@ -7,11 +7,16 @@
 
 namespace XYZRoguelike
 {
-	class Floor
-	{
-	public:
-		Floor(const MyEngine::Vector2Df& position, int textureMapIndex);
-	private:
-		MyEngine::GameObject* gameObject;
-	};
-}
+class Floor
+{
+  public:
+    Floor(const MyEngine::Vector2Df &position, int textureMapIndex);
+
+    MyEngine::GameObject *getGameObject() const
+    {
+        return gameObject;
+    }
+  private:
+    MyEngine::GameObject *gameObject;
+};
+} 

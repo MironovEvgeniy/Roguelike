@@ -10,12 +10,13 @@
 
 namespace XYZRoguelike
 {
-	class Player
-	{
-	public:
-		Player(const MyEngine::Vector2Df& position);
-		MyEngine::GameObject* GetGameObject();
-	private:
-		MyEngine::GameObject* gameObject;
-	};
-}
+class Player
+{
+  public:
+    Player(const MyEngine::Vector2Df &position);
+    MyEngine::GameObject *GetGameObject();
+
+  private:
+    MyEngine::GameObject *gameObject;
+};
+} // namespace XYZRoguelike

@@ -10,14 +10,14 @@
 namespace XYZRoguelike
 
 {
-   class HealthBar
-   {
-   public:
-      HealthBar(const MyEngine::Vector2Df& position);
+class HealthBar
+{
+  public:
+    HealthBar(const MyEngine::Vector2Df &position);
 
-   private:
-      MyEngine::GameObject* gameObject;
-      MyEngine::HealthComponent* playerHP;
-   };
+  private:
+    MyEngine::GameObject *gameObject;
+    MyEngine::HealthComponent *playerHP;
+};
 
-}
+} // namespace XYZRoguelike

@@ -2,29 +2,31 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 
-namespace RogueLikeGame {
-	
-	class Application
-	{
-	public:
-		Application(const Application& app) = delete;
-		Application& operator= (const Application&) = delete;
-		
-		static Application& Instance();
+namespace RogueLikeGame
+{
 
-		void Run();
+class Application
+{
+  public:
+    Application(const Application &app) = delete;
+    Application &operator=(const Application &) = delete;
 
-		Game& GetGame() { return game; }
+    static Application &Instance();
 
-	private:
-		Application();
-		~Application() = default;
+    void Run();
 
-	private:
-		Game game;
-		sf::RenderWindow window;
-	};
+    Game &GetGame()
+    {
+        return game;
+    }
 
-}
+  private:
+    Application();
+    ~Application() = default;
 
+  private:
+    Game game;
+    sf::RenderWindow window;
+};
 
+} // namespace RogueLikeGame

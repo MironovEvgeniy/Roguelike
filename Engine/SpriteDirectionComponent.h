@@ -5,16 +5,16 @@
 
 namespace MyEngine
 {
-   class SpriteDirectionComponent : public Component
-   {
-   public:
-      SpriteDirectionComponent(GameObject* gameObject);
+class SpriteDirectionComponent : public Component
+{
+  public:
+    SpriteDirectionComponent(GameObject *gameObject);
 
-      void Update(float deltaTime) override;
-      void Render() override;
+    void Update(float deltaTime) override;
+    void Render() override;
 
-   private:
-      InputComponent* input;
-      SpriteRendererComponent* spriteRenderer;
-   };
-}
+  private:
+    InputComponent *input;
+    SpriteRendererComponent *spriteRenderer;
+};
+} // namespace MyEngine
