@@ -8,14 +8,14 @@
 
 namespace XYZRoguelike
 {
-   class ArmorBar
-   {
-   public:
-      ArmorBar(const MyEngine::Vector2Df& position);
+class ArmorBar
+{
+  public:
+    ArmorBar(const MyEngine::Vector2Df &position);
 
-   private:
-      MyEngine::GameObject* gameObject;
-      MyEngine::HealthComponent* playerArmor;
-   };
+  private:
+    MyEngine::GameObject *gameObject;
+    MyEngine::HealthComponent *playerArmor;
+};
 
-}
+} // namespace XYZRoguelike

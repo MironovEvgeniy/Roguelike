@@ -6,10 +6,10 @@
 #include "DestroyStopAudio.h"
 namespace MyEngine
 {
-   class AudioSFX
-   {
+class AudioSFX
+{
 
-   public:
-      AudioSFX(const std::string& soundName);
-   };
-} 
+  public:
+    AudioSFX(const std::string &soundName);
+};
+} // namespace MyEngine

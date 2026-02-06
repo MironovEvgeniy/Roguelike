@@ -7,40 +7,40 @@
 
 namespace MyEngine
 {
-   class AttackComponent;
-   class SpriteMovementAnimationComponent : public Component
-   {
-   public:
-      SpriteMovementAnimationComponent(GameObject* gameObject);
+class AttackComponent;
+class SpriteMovementAnimationComponent : public Component
+{
+  public:
+    SpriteMovementAnimationComponent(GameObject *gameObject);
 
-      void Initialize(float newFramerate, float FramerateAttack);
+    void Initialize(float newFramerate, float FramerateAttack);
 
-      void Update(float deltaTime) override;
-      void Render() override;
+    void Update(float deltaTime) override;
+    void Render() override;
 
-   private:
-      MovementComponent* movement;
-      SpriteRendererComponent* renderer;
-      InputComponent* input;
-      HealthComponent* stats = nullptr;
-      bool isAttacking = false;
-      int attackHitFrame = 8;
-      bool didHitThisSwing = false;
-      float meleeAttackDistance = 55.f;
+  private:
+    MovementComponent *movement;
+    SpriteRendererComponent *renderer;
+    InputComponent *input;
+    HealthComponent *stats = nullptr;
+    bool isAttacking = false;
+    int attackHitFrame = 8;
+    bool didHitThisSwing = false;
+    float meleeAttackDistance = 55.f;
 
-      std::vector<const sf::Texture*> playerWalkTex;
-      std::vector<const sf::Texture*> playerIdleTex;
-      std::vector<const sf::Texture*> playerAttackTex;
-      std::vector<const sf::Texture*> playerHurtTex;
-      std::vector<const sf::Texture*> playerDeathTex;
-      float secondsForFrame = 0.f;
-      float secondsForFrameAttack = 0.f;
-      float counter = 0.f;
-      int attackFrame = 0;
-      int walkFrame = 0;
-      int idleFrame = 0;
-      int hurtFrame = 0;
-      int deathFrame = 0;
-      bool wasHurtLastFrame = false;
-   };
-} 
+    std::vector<const sf::Texture *> playerWalkTex;
+    std::vector<const sf::Texture *> playerIdleTex;
+    std::vector<const sf::Texture *> playerAttackTex;
+    std::vector<const sf::Texture *> playerHurtTex;
+    std::vector<const sf::Texture *> playerDeathTex;
+    float secondsForFrame = 0.f;
+    float secondsForFrameAttack = 0.f;
+    float counter = 0.f;
+    int attackFrame = 0;
+    int walkFrame = 0;
+    int idleFrame = 0;
+    int hurtFrame = 0;
+    int deathFrame = 0;
+    bool wasHurtLastFrame = false;
+};
+} // namespace MyEngine

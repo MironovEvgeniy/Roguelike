@@ -8,8 +8,8 @@
 #include "Music.h"
 #include "Wall.h"
 #include "Floor.h"
-//#include "HealthPickup.h"
-//#include "ArmorPickup.h"
+// #include "HealthPickup.h"
+// #include "ArmorPickup.h"
 #include "HealthBar.h"
 #include "ArmorBar.h"
 #include "AudioSFX.h"
@@ -18,26 +18,24 @@ using namespace MyEngine;
 
 namespace XYZRoguelike
 {
-	class DeveloperLevel : public Scene
-	{
-	public:
-		void Start() override;
-		void Restart() override;
-		void Stop() override;
+class DeveloperLevel : public Scene
+{
+  public:
+    void Start() override;
+    void Restart() override;
+    void Stop() override;
 
-		std::vector<std::unique_ptr<Wall>> walls;
-		std::vector<std::unique_ptr<Floor>> floors;
+    std::vector<std::unique_ptr<Wall>> walls;
+    std::vector<std::unique_ptr<Floor>> floors;
 
-	private:
-		std::shared_ptr<Player> player;
-		std::shared_ptr<Enemy> ai;
-		std::unique_ptr<Music> music;
+  private:
+    std::shared_ptr<Player> player;
+    //std::shared_ptr<Enemy> ai;
+    std::unique_ptr<Music> music;
 
-		//std::unique_ptr<HealthPickup> healthPickup;
-		//std::unique_ptr<ArmorPickup> armorPickup;
-		std::unique_ptr<HealthBar> healthBar;
-		std::unique_ptr<ArmorBar> armorBar;
-
-		
-	};
-}
+    // std::unique_ptr<HealthPickup> healthPickup;
+    // std::unique_ptr<ArmorPickup> armorPickup;
+    std::unique_ptr<HealthBar> healthBar;
+    std::unique_ptr<ArmorBar> armorBar;
+};
+} 

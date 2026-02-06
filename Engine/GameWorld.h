@@ -5,44 +5,49 @@
 
 namespace MyEngine
 {
-	class GameWorld
-	{
-	public:
-		static GameWorld* Instance();
+class GameWorld
+{
+  public:
+    static GameWorld *Instance();
 
-		void Update(float deltaTime);
-		void FixedUpdate(float deltaTime);
-		void Render();
-		void LateUpdate();
-		bool IsGameOver() const
-		{
-			return gameOver;
-		}
-		void SetGameOver(bool isGameOver)
-		{
-			gameOver = isGameOver;
-		}
-		GameObject* FindObjectByName(const std::string& name);
-		GameObject* FindClosestByName(const std::string& name, const Vector2Df& from, float maxDist);
+    void Update(float deltaTime);
+    void FixedUpdate(float deltaTime);
+    void Render();
+    void LateUpdate();
+    bool IsGameOver() const
+    {
+        return gameOver;
+    }
+    void SetGameOver(bool isGameOver)
+    {
+        gameOver = isGameOver;
+    }
+    GameObject *FindObjectByName(const std::string &name);
+    GameObject *FindClosestByName(const std::string &name, const Vector2Df &from, float maxDist);
 
-		GameObject* CreateGameObject();
-		GameObject* CreateGameObject(std::string name);
-		void DestroyGameObject(GameObject* gameObject);
-		void Clear();
+    GameObject *CreateGameObject();
+    GameObject *CreateGameObject(std::string name);
+    void DestroyGameObject(GameObject *gameObject);
+    void Clear();
 
-		void Print() const;
-	private:
-		GameWorld() {}
-		~GameWorld() {}
+    void Print() const;
 
-		GameWorld(GameWorld const&) = delete;
-		GameWorld& operator= (GameWorld const&) = delete;
+  private:
+    GameWorld()
+    {
+    }
+    ~GameWorld()
+    {
+    }
 
-		float fixedCounter = 0.f;
-		bool gameOver = false;
-		std::vector<GameObject*> gameObjects = {};
-		std::vector<GameObject*> markedToDestroyGameObjects = {};
+    GameWorld(GameWorld const &) = delete;
+    GameWorld &operator=(GameWorld const &) = delete;
 
-		void DestroyGameObjectImmediate(GameObject* gameObject);
-	};
-}
+    float fixedCounter = 0.f;
+    bool gameOver = false;
+    std::vector<GameObject *> gameObjects = {};
+    std::vector<GameObject *> markedToDestroyGameObjects = {};
+
+    void DestroyGameObjectImmediate(GameObject *gameObject);
+};
+} // namespace MyEngine

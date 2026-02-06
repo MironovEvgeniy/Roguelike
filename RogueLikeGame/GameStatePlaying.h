@@ -8,46 +8,45 @@
 
 namespace RogueLikeGame
 {
-	class Game;
+class Game;
 
-	enum class BonusType
-	{
-		BiggerPlatform,
-		SlowBall,
+enum class BonusType
+{
+    BiggerPlatform,
+    SlowBall,
 
-		Count
-	};
+    Count
+};
 
-	class GameStatePlayingData : public GameStateData
-	{
-	public:
-		void Init() override;
-		void HandleWindowEvent(const sf::Event& event) override;
-		void Update(float timeDelta) override;
-		void Draw(sf::RenderWindow& window) override;
+class GameStatePlayingData : public GameStateData
+{
+  public:
+    void Init() override;
+    void HandleWindowEvent(const sf::Event &event) override;
+    void Update(float timeDelta) override;
+    void Draw(sf::RenderWindow &window) override;
 
-	private:
-	
-		// Resources
-		sf::Texture appleTexture;
-		sf::Texture rockTexture;
-		sf::Font font;
-		sf::SoundBuffer eatAppleSoundBuffer;
-		sf::SoundBuffer gameOverSoundBuffer;
-		sf::SoundBuffer bonusSoundBuffer;
+  private:
+    // Resources
+    sf::Texture appleTexture;
+    sf::Texture rockTexture;
+    sf::Font font;
+    sf::SoundBuffer eatAppleSoundBuffer;
+    sf::SoundBuffer gameOverSoundBuffer;
+    sf::SoundBuffer bonusSoundBuffer;
 
-		// Game data
-	
-		// UI data
-		sf::Text temporaryText;
-		sf::Text inputHintText;
-		sf::RectangleShape background;
+    // Game data
 
-		// Sounds
-		sf::Sound gameOverSound;
-		sf::Sound bonusSound;
+    // UI data
+    sf::Text temporaryText;
+    sf::Text inputHintText;
+    sf::RectangleShape background;
 
-		//Bonus
-		std::map<BonusType, Bonus> bonuses;
-	};
-}
+    // Sounds
+    sf::Sound gameOverSound;
+    sf::Sound bonusSound;
+
+    // Bonus
+    std::map<BonusType, Bonus> bonuses;
+};
+} // namespace RogueLikeGame

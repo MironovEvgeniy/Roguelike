@@ -3,15 +3,15 @@
 
 namespace MyEngine
 {
-	AttackComponent::AttackComponent(GameObject* gameObject, float attackPower) : Component(gameObject), attackPower(attackPower)
+AttackComponent::AttackComponent(GameObject *gameObject, float attackPower) : Component(gameObject), attackPower(attackPower)
 
-	{
-	}
-
-	void AttackComponent::Update(float deltaTime)
-	{
-	}
-	void AttackComponent::Initialize(float newFramerate)
-	{
-	}
+{
 }
+
+void AttackComponent::Update(float deltaTime)
+{
+}
+void AttackComponent::Initialize(float newFramerate)
+{
+}
+} // namespace MyEngine

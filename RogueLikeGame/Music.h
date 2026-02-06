@@ -7,8 +7,9 @@
 
 class Music
 {
-public:
-	Music(const std::string& soundName);
-private:
-	MyEngine::GameObject* gameObject;
+  public:
+    Music(const std::string &soundName);
+
+  private:
+    MyEngine::GameObject *gameObject;
 };

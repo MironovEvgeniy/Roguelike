@@ -6,30 +6,29 @@
 
 namespace MyEngine
 {
-   class AudioComponent : public Component
-   {
-   public:
-      AudioComponent(GameObject* gameObject);
-      ~AudioComponent();
+class AudioComponent : public Component
+{
+  public:
+    AudioComponent(GameObject *gameObject);
+    ~AudioComponent();
 
-      void Update(float deltaTime) override;
-      void Render() override;
+    void Update(float deltaTime) override;
+    void Render() override;
 
-      void SetAudio(const sf::SoundBuffer& audio);
-      void SetLoop(bool loop);
+    void SetAudio(const sf::SoundBuffer &audio);
+    void SetLoop(bool loop);
 
-      void SetVolume(float volume);
-      void Play();
-      void Stop();
-      void Pause();
-      void Resume();
-      bool IsPlaying() const
-      {
-         return sound->getStatus() == sf::SoundSource::Playing;
-      }
+    void SetVolume(float volume);
+    void Play();
+    void Stop();
+    void Pause();
+    void Resume();
+    bool IsPlaying() const
+    {
+        return sound->getStatus() == sf::SoundSource::Playing;
+    }
 
-   private:
-      sf::Sound* sound;
-
-   };
-} 
+  private:
+    sf::Sound *sound;
+};
+} // namespace MyEngine
