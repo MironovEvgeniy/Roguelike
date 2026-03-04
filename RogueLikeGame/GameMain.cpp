@@ -5,6 +5,7 @@
 #include "ResourceSystem.h"
 #include "DeveloperLevel.h"
 #include "Matrix2D.h"
+#include "LevelManager.h"
 
 using namespace XYZRoguelike;
 
@@ -12,6 +13,7 @@ int main()
 {
     MyEngine::RenderSystem::Instance()->SetMainWindow(new sf::RenderWindow(sf::VideoMode(1280, 720), "XYZRoguelike"));
 
+    ResourceSystem::Instance()->LoadTexture("ball", "Resources/Textures/ball.png");
     ResourceSystem::Instance()->LoadTextureMap("player_attack", "Resources/Textures/Attack.png", {100, 64}, 9, false);
     ResourceSystem::Instance()->LoadTextureMap("player_hurt", "Resources/Textures/Hurt.png", {100, 64}, 4, false);
     ResourceSystem::Instance()->LoadTextureMap("player_walking", "Resources/Textures/Walking.png", {100, 64}, 7, false);
@@ -36,9 +38,9 @@ int main()
     ResourceSystem::Instance()->LoadSound("ArmorPick", "Resources/Sounds/armor.wav");
     ResourceSystem::Instance()->LoadSound("HealthPick", "Resources/Sounds/AS.wav");
 
-    auto developerLevel = std::make_shared<DeveloperLevel>();
-    developerLevel->Start();
-
+    /*auto developerLevel = std::make_shared<DeveloperLevel>();
+    developerLevel->Start();*/
+    LevelManager::Instance()->LoadRandomLevels();
     MyEngine::Engine::Instance()->Run();
 
     return 0;

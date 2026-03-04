@@ -11,7 +11,7 @@ class Floor
 {
   public:
     Floor(const MyEngine::Vector2Df &position, int textureMapIndex);
-
+    MyEngine::TransformComponent *transform;
     MyEngine::GameObject *getGameObject() const
     {
         return gameObject;
