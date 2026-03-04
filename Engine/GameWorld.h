@@ -24,7 +24,19 @@ class GameWorld
     }
     GameObject *FindObjectByName(const std::string &name);
     GameObject *FindClosestByName(const std::string &name, const Vector2Df &from, float maxDist);
+    template <typename Component> std::vector<GameObject *> GetGameObjectsByComponent()
+    {
 
+        std::vector<GameObject *> result;
+        for (const auto &gameObject : gameObjects)
+        {
+            if (gameObject->GetComponent<Component>() != nullptr)
+            {
+                result.push_back(gameObject);
+            }
+        }
+        return result;
+    }
     GameObject *CreateGameObject();
     GameObject *CreateGameObject(std::string name);
     void DestroyGameObject(GameObject *gameObject);

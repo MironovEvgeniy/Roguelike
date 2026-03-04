@@ -4,7 +4,7 @@
 XYZRoguelike::Wall::Wall(const MyEngine::Vector2Df position, int textureMapIndex)
 {
     gameObject = MyEngine::GameWorld::Instance()->CreateGameObject("Wall");
-    auto transform = gameObject->GetComponent<MyEngine::TransformComponent>();
+    transform = gameObject->GetComponent<MyEngine::TransformComponent>();
     transform->SetWorldPosition(position);
 
     auto renderer = gameObject->AddComponent<MyEngine::SpriteRendererComponent>();

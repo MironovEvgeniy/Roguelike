@@ -19,6 +19,7 @@ void EnemySpawner::Spawn(DeveloperLevel *level, MyEngine::GameObject *player, in
         MyEngine::Vector2Df spawnPos = floor->getGameObject()->GetComponent<MyEngine::TransformComponent>()->GetWorldPosition();
 
         std::make_unique<Enemy>(spawnPos, player);
+      
     }
 }
 

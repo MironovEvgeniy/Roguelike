@@ -14,7 +14,10 @@ class Player
 {
   public:
     Player(const MyEngine::Vector2Df &position);
-    MyEngine::GameObject *GetGameObject();
+    MyEngine::GameObject* GetGameObject()
+    {
+        return gameObject;
+    }
 
   private:
     MyEngine::GameObject *gameObject;

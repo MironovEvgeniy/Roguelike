@@ -6,7 +6,8 @@
 namespace XYZRoguelike
 {
 // Constructor: Initializes the maze generator with the given dimensions and level reference.
-MazeGenerator::MazeGenerator(int width, int height, DeveloperLevel *level) : width(width), height(height), level(level)
+MazeGenerator::MazeGenerator(int width, int height, DeveloperLevel *level, float offsetX, float offsetY)
+    : width(width), height(height), level(level), offsetX(offsetX), offsetY(offsetY)
 {
     // Resize the grid to match the maze dimensions and initialize all cells as unvisited (false).
     grid.resize(height, std::vector<bool>(width, false));
@@ -19,8 +20,9 @@ void MazeGenerator::Generate()
     std::srand(std::time(nullptr));
 
     // Start from a random cell in the grid.
-    int startX = std::rand() % width;
-    int startY = std::rand() % height;
+    int startX = (width / 4);
+    int startY = (height / 4);
+
 
     // Use a stack to keep track of visited cells during DFS.
     std::stack<std::pair<int, int>> stack;
@@ -95,13 +97,17 @@ void MazeGenerator::RemoveWall(int x1, int y1, int x2, int y2)
     int wallY = (y1 + y2) / 2;
 
     // Add floors to the current cell and the neighboring cell.
-    level->floors.push_back(std::make_unique<Floor>(MyEngine::Vector2Df{x1 * 128.f, y1 * 128.f}, 0));
-    level->floors.push_back(std::make_unique<Floor>(MyEngine::Vector2Df{x2 * 128.f, y2 * 128.f}, 0));
+    if (x1 > 0 && x1 < level->width && y1 > 0 && y1 < level->height)
+    level->floors.push_back(std::make_unique<Floor>(MyEngine::Vector2Df{(x1 + 0.5f) * 128.f, (y1 + 0.5f) * 128.f}, 0));
+
+    if (x2 > 0 && x2 < level->width && y2 > 0 && y2 < level->height)
+    level->floors.push_back(std::make_unique<Floor>(MyEngine::Vector2Df{(x2 + 0.5f) * 128.f, (y2 + 0.5f) * 128.f}, 0));
 
     // Add a wall at the midpoint if the cells are not directly adjacent.
-    if (wallX != x1 || wallY != y1)
+    if (wallX > 0 && wallX < level->width && wallY > 0 && wallY < level->height)
     {
-        level->walls.push_back(std::make_unique<Wall>(MyEngine::Vector2Df{wallX * 128.f, wallY * 128.f}, 14));
+        level->walls.push_back(
+            std::make_unique<Wall>(MyEngine::Vector2Df{(wallX + 0.5f) * 128.f + offsetX , (wallY + 0.5f) * 128.f + offsetY}, 14));
     }
 }
 } 

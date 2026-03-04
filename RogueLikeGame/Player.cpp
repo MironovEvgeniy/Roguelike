@@ -19,7 +19,8 @@ Player::Player(const MyEngine::Vector2Df &position)
 
     auto renderer = gameObject->AddComponent<MyEngine::SpriteRendererComponent>();
     renderer->SetTexture(*MyEngine::ResourceSystem::Instance()->GetTextureMapElementShared("player_idle", 0));
-    renderer->SetPixelSize(100, 100);
+    /*renderer->SetPixelSize(100, 100);*/
+    renderer->SetPixelSize(80, 80);
 
     auto camera = gameObject->AddComponent<MyEngine::CameraComponent>();
     camera->SetWindow(&MyEngine::RenderSystem::Instance()->GetMainWindow());
@@ -36,7 +37,8 @@ Player::Player(const MyEngine::Vector2Df &position)
     rigidbody->SetKinematic(false);
 
     auto collider = gameObject->AddComponent<MyEngine::SpriteColliderComponent>();
-    collider->SetPadding({50.f, 0.f});
+    //collider->SetPadding({50.f, 0.f});
+    collider->SetPadding({25.f, 20.f});
 
     auto healthComponent = gameObject->AddComponent<MyEngine::HealthComponent>(100.f, 0.f);
 
@@ -45,10 +47,5 @@ Player::Player(const MyEngine::Vector2Df &position)
     auto animator = gameObject->AddComponent<MyEngine::SpriteMovementAnimationComponent>();
 
     animator->Initialize(6.f, 12.f);
-}
-
-MyEngine::GameObject *Player::GetGameObject()
-{
-    return gameObject;
 }
 } // namespace XYZRoguelike

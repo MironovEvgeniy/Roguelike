@@ -2,7 +2,7 @@
 #include <ResourceSystem.h>
 #include <SpriteColliderComponent.h>
 #include <SpriteDirectionComponent.h>
-#include <AIMovementComponent.h>
+
 #include <AIAnimationComponent.h>
 #include <AttackComponent.h>
 
@@ -16,7 +16,8 @@ Enemy::Enemy(const MyEngine::Vector2Df &position, MyEngine::GameObject *target)
 
     auto renderer = gameObject->AddComponent<MyEngine::SpriteRendererComponent>();
     renderer->SetTexture(*MyEngine::ResourceSystem::Instance()->GetTextureMapElementShared("enemy_idle", 0));
-    renderer->SetPixelSize(100, 120);
+    //renderer->SetPixelSize(100, 120);
+    renderer->SetPixelSize(80, 80);
 
     auto movement = gameObject->AddComponent<MyEngine::AIMovementComponent>();
     movement->SetSpeed(100.f);
@@ -27,7 +28,8 @@ Enemy::Enemy(const MyEngine::Vector2Df &position, MyEngine::GameObject *target)
     auto AIAnimation = gameObject->AddComponent<MyEngine::AIAnimationComponent>();
     AIAnimation->Initialize(6.f, 5.f);
     auto collider = gameObject->AddComponent<MyEngine::SpriteColliderComponent>();
-    collider->SetPadding({50.f, 0.f});
+    collider->SetPadding({25.f, 20.f});
+    // collider->SetPadding({50.f, 0.f});
 
     auto attack = gameObject->AddComponent<MyEngine::AttackComponent>(10.f);
 }

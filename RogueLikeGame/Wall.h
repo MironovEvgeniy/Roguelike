@@ -10,7 +10,7 @@ class Wall
 {
   public:
     Wall(const MyEngine::Vector2Df position, int textureMapIndex);
-
+    MyEngine::TransformComponent *transform;
   private:
     MyEngine::GameObject *gameObject;
 };
